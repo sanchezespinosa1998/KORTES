@@ -452,9 +452,7 @@
           pin: ".pin-element",
           start: "top top",
           end: "bottom bottom",
-          // Keep layout spacing so following sections don't shift/overlap and
-          // downstream triggers (like the CTA title) fire at the expected viewport position.
-          pinSpacing: true,
+          pinSpacing: false,
         }
       });
     }
@@ -532,26 +530,6 @@
       }
     });
   })
-
-  // cta text animation 
-  if (document.querySelectorAll(".cta-area").length > 0) {
-    var tl = gsap.timeline({
-      ease: "none",
-      scrollTrigger: {
-        // Start the CTA animation when the title reaches the center of the viewport.
-        // Keep pinning the whole section.
-        trigger: ".cta-area .section-title",
-        pin: ".cta-area",
-        pinSpacing: true,
-        scrub: 2,
-        start: "center center",
-        end: "+=200%",
-        invalidateOnRefresh: true,
-      }
-    });
-    tl.to(".cta-area .area-bg", { scale: "10", delay: 0.1, ease: "power2.in" });
-    tl.to(".cta-area .section-title", { fontSize: "18vw", ease: "power2.in" }, "<");
-  }
 
   // hover reveal start
   if (document.querySelectorAll(".hover-reveal").length > 0) {
