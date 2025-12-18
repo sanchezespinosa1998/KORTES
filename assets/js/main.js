@@ -58,15 +58,61 @@
 (function ($) {
   "use strict";
 
+  // #region agent log (perf instrumentation)
+  const __agentSessionId = "debug-session";
+  const __agentRunId = "pre-opt";
+  function __agentLog(hypothesisId, location, message, data) {
+    try {
+      fetch("http://127.0.0.1:7243/ingest/6564b966-7db7-4315-8fd8-e832e7c96d1d", {
+        method: "POST",
+        // Use no-cors to avoid browser CORS blocking when opening via file://
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({
+          sessionId: __agentSessionId,
+          runId: __agentRunId,
+          hypothesisId,
+          location,
+          message,
+          data,
+          timestamp: Date.now(),
+        }),
+      }).catch(() => { });
+    } catch (_) { }
+  }
+  const __agentT0 = (performance && performance.now) ? performance.now() : Date.now();
+  __agentLog(
+    "A",
+    "assets/js/main.js:IIFE",
+    "main.js loaded (IIFE start)",
+    {
+      ua: (navigator && navigator.userAgent) ? navigator.userAgent : "n/a",
+      href: (location && location.href) ? location.href : "n/a",
+    }
+  );
+  // #endregion agent log (perf instrumentation)
+
   var windowOn = $(window);
   let mm = gsap.matchMedia();
 
   // Preloader
   $(document).ready(function () {
+    // #region agent log (perf instrumentation)
+    __agentLog("A", "assets/js/main.js:document.ready", "document.ready fired", {
+      dtMs: ((performance && performance.now) ? performance.now() : Date.now()) - __agentT0,
+      preloaderExists: !!document.getElementById("preloader"),
+      imagesInDom: document.images ? document.images.length : null,
+    });
+    // #endregion agent log (perf instrumentation)
     $('#container').addClass('loaded');
     if ($('#container').hasClass('loaded')) {
       $('#preloader').delay(1000).queue(function () {
         $(this).remove();
+        // #region agent log (perf instrumentation)
+        __agentLog("A", "assets/js/main.js:preloader.remove", "preloader removed", {
+          dtMs: ((performance && performance.now) ? performance.now() : Date.now()) - __agentT0,
+        });
+        // #endregion agent log (perf instrumentation)
       });
     }
   });
@@ -116,9 +162,44 @@
         },
         ignoreMobileResize: true,
       });
+      // #region agent log (perf instrumentation)
+      __agentLog("B", "assets/js/main.js:ScrollSmoother.create", "ScrollSmoother created", {
+        dtMs: ((performance && performance.now) ? performance.now() : Date.now()) - __agentT0,
+        deviceWidth: device_width,
+        effects: device_width < 1025 ? false : true,
+      });
+      // #endregion agent log (perf instrumentation)
     }
 
   }
+
+  // #region agent log (perf instrumentation)
+  // One-shot: after initial scripts, sample heavy resources (images/scripts/css)
+  window.addEventListener("load", function () {
+    try {
+      const res = performance.getEntriesByType ? performance.getEntriesByType("resource") : [];
+      const top = res
+        .filter((r) => r && r.name && !r.name.startsWith("data:"))
+        .sort((a, b) => (b.transferSize || 0) - (a.transferSize || 0))
+        .slice(0, 8)
+        .map((r) => ({
+          name: String(r.name).slice(-80),
+          initiatorType: r.initiatorType,
+          transferSize: r.transferSize || 0,
+          durationMs: Math.round(r.duration || 0),
+        }));
+
+      __agentLog("C", "assets/js/main.js:window.load", "window.load resource sample", {
+        dtMs: ((performance && performance.now) ? performance.now() : Date.now()) - __agentT0,
+        resources: res.length,
+        top,
+        scrollTriggers: (window.ScrollTrigger && ScrollTrigger.getAll) ? ScrollTrigger.getAll().length : null,
+      });
+    } catch (e) {
+      __agentLog("C", "assets/js/main.js:window.load", "window.load resource sample failed", { err: String(e) });
+    }
+  }, { once: true });
+  // #endregion agent log (perf instrumentation)
 
   // Side Info Js
   $(".side-info-close,.offcanvas-overlay").on("click", function () {
@@ -371,7 +452,9 @@
           pin: ".pin-element",
           start: "top top",
           end: "bottom bottom",
-          pinSpacing: false,
+          // Keep layout spacing so following sections don't shift/overlap and
+          // downstream triggers (like the CTA title) fire at the expected viewport position.
+          pinSpacing: true,
         }
       });
     }
@@ -455,12 +538,15 @@
     var tl = gsap.timeline({
       ease: "none",
       scrollTrigger: {
-        trigger: ".cta-area",
-        pin: true,
+        // Start the CTA animation when the title reaches the center of the viewport.
+        // Keep pinning the whole section.
+        trigger: ".cta-area .section-title",
+        pin: ".cta-area",
         pinSpacing: true,
         scrub: 2,
-        start: 'bottom 100%',
-        end: "200%",
+        start: "center center",
+        end: "+=200%",
+        invalidateOnRefresh: true,
       }
     });
     tl.to(".cta-area .area-bg", { scale: "10", delay: 0.1, ease: "power2.in" });
@@ -1131,6 +1217,9 @@
       }
 
       if (onscroll_value == 1) {
+        // For the CTA ("Let's Work") we want the animation to start when the text is centered in the viewport.
+        // Keep the default behavior for other char-anim elements (e.g. hero title).
+        const charAnimStart = item.closest(".cta-area") ? "center center" : "top 85%";
         if (translateX_value > 0 && !translateY_value) {
           let split_char = new SplitText(item, {
             type: "chars, words"
@@ -1144,7 +1233,7 @@
             ease: ease_value,
             scrollTrigger: {
               trigger: item,
-              start: 'top 85%',
+              start: charAnimStart,
             }
           });
         }
@@ -1161,7 +1250,7 @@
             stagger: stagger_value,
             scrollTrigger: {
               trigger: item,
-              start: 'top 85%',
+              start: charAnimStart,
             }
           });
         }
@@ -1179,7 +1268,7 @@
             stagger: stagger_value,
             scrollTrigger: {
               trigger: item,
-              start: 'top 85%',
+              start: charAnimStart,
             }
           });
         }
@@ -1196,7 +1285,7 @@
             ease: ease_value,
             scrollTrigger: {
               trigger: item,
-              start: 'top 85%',
+              start: charAnimStart,
             }
           });
         }
