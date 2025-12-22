@@ -6383,21 +6383,6 @@ section.pain-points-area {
     color: var(--black);
 }
 
-/* About ("Sobre mí") image: reduce height without changing layout */
-#sobre .about-me-photo {
-    max-height: 560px;
-    width: 100%;
-    object-fit: cover;
-    object-position: center 25%;
-    display: block;
-    border-radius: 24px;
-}
-
-@media only screen and (max-width: 991px) {
-    #sobre .about-me-photo {
-        max-height: 420px;
-    }
-}
 
 /* About ("Sobre mí") typography: slightly larger for readability */
 #sobre .funfact-item .text {
@@ -6421,6 +6406,148 @@ section.pain-points-area {
     .funfact-area .funfact-item .text {
         margin-top: 24px;
     }
+}
+
+/* Accompaniment layout - título, texto y CTA izquierda, foto derecha */
+/* Override funfact-area-inner grid for accompaniment section */
+#sobre .funfact-area-inner {
+    display: block !important;
+    grid-template-columns: none !important;
+    gap: 0 !important;
+}
+
+#sobre .funfact-wrapper-box {
+    padding-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+}
+
+.accompaniment-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 60px !important;
+    align-items: center;
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-auto-flow: row !important;
+    min-height: 70vh;
+}
+
+@media only screen and (max-width: 1199px) {
+    .accompaniment-layout {
+        gap: 40px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .accompaniment-layout {
+        grid-template-columns: 1fr !important;
+        gap: 40px;
+    }
+    .accompaniment-image {
+        order: -1;
+    }
+}
+
+.accompaniment-text {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    width: 100%;
+}
+
+.accompaniment-text .section-header {
+    margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 991px) {
+    .accompaniment-text .section-header {
+        margin-bottom: 20px;
+    }
+}
+
+/* Accompaniment image - nueva implementación */
+.accompaniment-image {
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+}
+
+.accompaniment-image .thumb {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accompaniment-image .thumb img,
+.accompaniment-image .about-me-photo {
+    width: 100%;
+    height: auto;
+    max-height: 800px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 24px;
+    margin: auto;
+}
+
+@media only screen and (max-width: 1399px) {
+    .accompaniment-image .thumb img,
+    .accompaniment-image .about-me-photo {
+        max-height: 750px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .accompaniment-image .thumb img,
+    .accompaniment-image .about-me-photo {
+        max-height: 700px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .accompaniment-image {
+        grid-column: 1;
+        order: -1;
+    }
+    .accompaniment-image .thumb {
+        align-items: flex-start;
+    }
+    .accompaniment-image .thumb img,
+    .accompaniment-image .about-me-photo {
+        height: auto;
+        max-height: 500px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/* Update text styles for accompaniment section */
+.accompaniment-text .text {
+    font-size: 24px;
+    line-height: 1.65;
+    color: var(--black);
+    margin-top: 0;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+@media only screen and (max-width: 991px) {
+    .accompaniment-text .text {
+        font-size: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+.accompaniment-text .text strong {
+    font-weight: 800;
+    font-family: "Work Sans", sans-serif;
 }
 
 
