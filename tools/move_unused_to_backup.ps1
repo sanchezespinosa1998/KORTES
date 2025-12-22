@@ -37,3 +37,5 @@ foreach ($rel in $list) {
 Write-Host 'Movido a _unused_backup. Puedes borrar esa carpeta cuando verifiques que todo va bien.'
 
 
+
+

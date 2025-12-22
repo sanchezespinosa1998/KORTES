@@ -95,25 +95,16 @@
   var windowOn = $(window);
   let mm = gsap.matchMedia();
 
-  // Preloader
   $(document).ready(function () {
-    // #region agent log (perf instrumentation)
-    __agentLog("A", "assets/js/main.js:document.ready", "document.ready fired", {
-      dtMs: ((performance && performance.now) ? performance.now() : Date.now()) - __agentT0,
-      preloaderExists: !!document.getElementById("preloader"),
-      imagesInDom: document.images ? document.images.length : null,
-    });
-    // #endregion agent log (perf instrumentation)
-    $('#container').addClass('loaded');
-    if ($('#container').hasClass('loaded')) {
-      $('#preloader').delay(1000).queue(function () {
-        $(this).remove();
-        // #region agent log (perf instrumentation)
-        __agentLog("A", "assets/js/main.js:preloader.remove", "preloader removed", {
-          dtMs: ((performance && performance.now) ? performance.now() : Date.now()) - __agentT0,
-        });
-        // #endregion agent log (perf instrumentation)
+    try {
+      // #region agent log (perf instrumentation)
+      __agentLog("A", "assets/js/main.js:document.ready", "document.ready fired", {
+        dtMs: ((performance && performance.now) ? performance.now() : Date.now()) - __agentT0,
+        imagesInDom: document.images ? document.images.length : null,
       });
+      // #endregion agent log (perf instrumentation)
+    } catch (e) {
+      console.error('Error in document ready:', e);
     }
   });
 
@@ -597,6 +588,31 @@
     });
   }
 
+  // Pain points animation
+  if (document.querySelectorAll(".pain-point-item").length > 0) {
+    const painPoints = document.querySelectorAll(".pain-point-item");
+    painPoints.forEach((item, index) => {
+      gsap.fromTo(item, 
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+    });
+  }
+
   // video Active
   if (document.querySelectorAll(".video-element").length > 0) {
     var video_fixed = document.querySelector('.video-element');
@@ -695,37 +711,6 @@
         duration: 2,
         y: "55%",
         transformOrigin: "bottom center",
-      });
-      ab2.to(".about-area", {
-        scrollTrigger: {
-          trigger: ".about-area",
-          start: "top 0",
-          end: "bottom bottom",
-          pin: ".about-area",
-          pinSpacing: false,
-          scrub: 1,
-        },
-      });
-      ab2.to(".big-text-wrapper", {
-        scrollTrigger: {
-          trigger: ".about-area",
-          start: "top top",
-          end: "bottom bottom",
-          pin: ".big-text-wrapper",
-          pinSpacing: false,
-          scrub: 1,
-        },
-      });
-      gsap.to([".about-area .text-wrapper", ".about-area .btn-wrapper"], {
-        y: "40",
-        delay: 2,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: ".about-area",
-          start: "top center",
-          end: "center center",
-          scrub: 1,
-        },
       });
     }
   });
@@ -1687,7 +1672,7 @@
             let innerOffset = swiper.height * interleaveOffset;
             let innerTranslate = slideProgress * innerOffset;
 
-            TweenMax.set(swiper.slides[i].querySelector(".slide-inner"), {
+            gsap.set(swiper.slides[i].querySelector(".slide-inner"), {
               y: innerTranslate,
             });
           }
@@ -1848,13 +1833,6 @@
     });
   });
 
-  // circle Animation
-  const circleAnimation = document.querySelector(".circle-text .text");
-  if (circleAnimation) {
-    circleAnimation.innerHTML = [...circleAnimation.innerText]
-      .map((char, i) => `<span style="transform:rotate(${i * 14}deg)">${char}</span>`)
-      .join("");
-  }
 
   // Home 1 brand slider //
   if (document.querySelectorAll(".h1-brand__slider").length > 0) {
@@ -2863,6 +2841,41 @@
     },
   });
 
+
+  // Portfolio slider
+  if (document.querySelectorAll(".portfolio-slider").length > 0) {
+    var portfolioSlider = new Swiper(".portfolio-slider", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".portfolio-slider .swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".portfolio-nav-next",
+        prevEl: ".portfolio-nav-prev",
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 25,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      },
+    });
+  }
 
   $(document).ready(function () {
 
