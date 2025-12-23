@@ -6048,6 +6048,7 @@ section.pain-points-area {
     opacity: 0.8;
     flex: 1;
     min-width: 200px;
+    text-align: left;
 }
 
 @media only screen and (max-width: 1199px) {
