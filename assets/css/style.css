@@ -6115,6 +6115,8 @@ section.pain-points-area {
     color: var(--primary);
     font-family: var(--font_instrumentsans);
     white-space: nowrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .service-simple-item .service-separator {
@@ -6167,6 +6169,10 @@ section.pain-points-area {
 
     .service-simple-item .service-name {
         font-size: 26px;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
     }
 
     .service-simple-item .service-separator {
