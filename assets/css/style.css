@@ -5742,9 +5742,9 @@ section.pain-points-area {
 }
 
 .service-card-pro {
-    background-color: var(--primary);
+    background-color: #e39eae;
     color: var(--white);
-    border-color: var(--primary);
+    border-color: #e39eae;
 }
 
 .service-card-premium {
@@ -5780,7 +5780,7 @@ section.pain-points-area {
 .service-card-pro .service-card-icon .icon-symbol,
 .service-card-pro .service-card-title,
 .service-card-pro .service-card-description {
-    color: var(--white);
+    color: var(--primary);
 }
 
 .service-card-header {
@@ -5798,8 +5798,8 @@ section.pain-points-area {
 }
 
 .service-card-pro .service-card-subtitle {
-    color: var(--white);
-    opacity: 0.8;
+    color: var(--primary);
+    opacity: 0.7;
 }
 
 .service-card-title {
@@ -5851,7 +5851,7 @@ section.pain-points-area {
 }
 
 .service-card-pro .service-feature-item {
-    color: var(--white);
+    color: var(--primary);
 }
 
 .service-feature-item .check-icon {
@@ -5863,7 +5863,7 @@ section.pain-points-area {
 }
 
 .service-card-pro .service-feature-item .check-icon {
-    color: var(--bg);
+    color: var(--theme);
 }
 
 .service-feature-item span:last-child {
@@ -5892,7 +5892,7 @@ section.pain-points-area {
 }
 
 .service-card-pro .price-amount {
-    color: var(--white);
+    color: var(--primary);
 }
 
 .price-vat {
@@ -5902,8 +5902,8 @@ section.pain-points-area {
 }
 
 .service-card-pro .price-vat {
-    color: var(--white);
-    opacity: 0.8;
+    color: var(--primary);
+    opacity: 0.7;
 }
 
 .service-card-action {
@@ -5935,15 +5935,28 @@ section.pain-points-area {
 
 .service-card-basic .service-card-action .rr-btn,
 .service-card-premium .service-card-action .rr-btn {
-    background-color: transparent;
-    border-color: var(--primary);
-    color: var(--primary);
+    background-color: #e39eae;
+    border-color: #e39eae;
+    color: var(--white);
+}
+
+.service-card-basic .service-card-action .rr-btn .btn-wrap .text-one,
+.service-card-basic .service-card-action .rr-btn .btn-wrap .text-two,
+.service-card-premium .service-card-action .rr-btn .btn-wrap .text-one,
+.service-card-premium .service-card-action .rr-btn .btn-wrap .text-two {
+    color: var(--white);
+}
+
+.service-card-basic .service-card-action .rr-btn.hover-bg-theme::before,
+.service-card-premium .service-card-action .rr-btn.hover-bg-theme::before {
+    background-color: #4A1E20 !important;
 }
 
 .service-card-basic .service-card-action .rr-btn:hover,
 .service-card-premium .service-card-action .rr-btn:hover {
-    background-color: var(--primary);
+    background-color: #4A1E20;
     color: var(--white);
+    border-color: #4A1E20;
 }
 
 .service-card-basic .service-card-action .rr-btn:hover .btn-wrap .text-one,
@@ -5970,8 +5983,8 @@ section.pain-points-area {
 }
 
 .service-card-pro .service-card-action .rr-btn {
-    background-color: transparent;
-    border-color: var(--white);
+    background-color: #4A1E20;
+    border-color: #4A1E20;
     color: var(--white);
 }
 
@@ -5980,14 +5993,18 @@ section.pain-points-area {
     color: var(--white);
 }
 
+.service-card-pro .service-card-action .rr-btn.hover-bg-theme::before {
+    background-color: #CB404D !important;
+}
+
 .service-card-pro .service-card-action .rr-btn:hover {
-    background-color: var(--white);
-    border-color: var(--white);
+    background-color: #CB404D;
+    border-color: #CB404D;
 }
 
 .service-card-pro .service-card-action .rr-btn:hover .btn-wrap .text-one,
 .service-card-pro .service-card-action .rr-btn:hover .btn-wrap .text-two {
-    color: var(--primary);
+    color: var(--white);
 }
 
 /* Servicios complementarios */
@@ -6646,6 +6663,7 @@ section.pain-points-area {
 
 .accompaniment-text .section-title {
     font-size: 48px !important;
+    color: #ffffff !important;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -6738,7 +6756,7 @@ section.pain-points-area {
 .accompaniment-text .text {
     font-size: 18px;
     line-height: 1.65;
-    color: var(--black);
+    color: #ffffff !important;
     margin-top: 0;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -6755,6 +6773,7 @@ section.pain-points-area {
 .accompaniment-text .text strong {
     font-weight: 800;
     font-family: "Work Sans", sans-serif;
+    color: #ffffff !important;
 }
 
 
@@ -22077,6 +22096,94 @@ only screen and (max-width: 1919px) {
 .footer-area .copyright-area-inner {
     border-top: 1px solid var(--border);
     padding: 47px 0;
+}
+
+/* Footer social icons */
+.footer-social-icons-wrapper {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.footer-social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-social-icons li {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-social-icons li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.footer-social-icons li a:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}
+
+.footer-social-icons .social-icon-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+@media only screen and (max-width: 1399px) {
+    .footer-social-icons {
+        gap: 35px;
+    }
+
+    .footer-social-icons .social-icon-img {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .footer-social-icons-wrapper {
+        padding: 35px 0;
+    }
+
+    .footer-social-icons {
+        gap: 30px;
+    }
+
+    .footer-social-icons .social-icon-img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .footer-social-icons-wrapper {
+        padding: 30px 0;
+    }
+
+    .footer-social-icons {
+        gap: 25px;
+    }
+
+    .footer-social-icons .social-icon-img {
+        width: 28px;
+        height: 28px;
+    }
 }
 
 @media only screen and (max-width: 1919px) {
