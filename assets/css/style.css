@@ -22143,6 +22143,8 @@ only screen and (max-width: 1919px) {
     display: block;
     pointer-events: none;
     user-select: none;
+    filter: brightness(0) saturate(100%) invert(12%) sepia(25%) saturate(1200%) hue-rotate(320deg) brightness(85%) contrast(95%);
+    transition: filter 0.3s ease;
 }
 
 @media only screen and (max-width: 1399px) {
