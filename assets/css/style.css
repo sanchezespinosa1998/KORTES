@@ -1278,6 +1278,17 @@ h6 {
     border: 1px solid var(--black);
     border-radius: 50%;
     line-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-info-close .close-icon {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--black);
+    line-height: 1;
+    display: inline-block;
 }
 
 .dark .side-info-close {
@@ -21158,9 +21169,38 @@ only screen and (max-width: 1919px) {
     }
 }
 
-.header-area .header__navicon i {
-    font-size: 22px;
+.header-area .header__navicon i,
+.header-area .header__navicon .menu-icon {
+    font-size: 28px;
     color: var(--primary);
+    font-weight: 900;
+    display: inline-block;
+    line-height: 1;
+}
+
+.header-area .header__navicon .menu-icon {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.header-area .header__navicon .side-toggle {
+    background-color: rgba(74, 30, 32, 0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-area .header__navicon .side-toggle:hover {
+    background-color: var(--primary);
+}
+
+.header-area .header__navicon .side-toggle:hover i,
+.header-area .header__navicon .side-toggle:hover .menu-icon {
+    color: var(--white);
 }
 
 
