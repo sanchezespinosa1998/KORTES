@@ -4428,7 +4428,7 @@ section {
 
 @media only screen and (max-width: 767px) {
     .hero-area .section-title {
-        font-size: clamp(32px, 8vw, 48px);
+        font-size: clamp(44px, 11vw, 68px);
         align-items: flex-start;
         margin: 0;
         margin-bottom: -15px;
@@ -4562,7 +4562,7 @@ section {
 
 @media only screen and (max-width: 767px) {
     .hero-area .text-wrapper .text {
-        font-size: 18px;
+        font-size: 24px;
     }
 }
 
@@ -6056,7 +6056,7 @@ section.pain-points-area {
 }
 
 .service-simple-item .service-name {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 600;
     color: var(--primary);
     font-family: var(--font_instrumentsans);
@@ -6071,7 +6071,7 @@ section.pain-points-area {
 }
 
 .service-simple-item .service-details {
-    font-size: 18px;
+    font-size: 22px;
     color: var(--primary);
     opacity: 0.8;
     flex: 1;
@@ -6091,11 +6091,11 @@ section.pain-points-area {
     }
 
     .service-simple-item .service-name {
-        font-size: 22px;
+        font-size: 28px;
     }
 
     .service-simple-item .service-details {
-        font-size: 16px;
+        font-size: 20px;
     }
 }
 
@@ -6112,7 +6112,7 @@ section.pain-points-area {
     }
 
     .service-simple-item .service-name {
-        font-size: 20px;
+        font-size: 26px;
     }
 
     .service-simple-item .service-separator {
@@ -6120,8 +6120,9 @@ section.pain-points-area {
     }
 
     .service-simple-item .service-details {
-        font-size: 15px;
+        font-size: 20px;
         min-width: auto;
+        text-align: center;
     }
 
     .service-simple-item::after {
