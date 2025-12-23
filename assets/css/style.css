@@ -4352,7 +4352,7 @@ section {
 
 .hero-area .section-title .hero-title-line-1 {
     font-family: "Fraunces", serif;
-    color: var(--theme);
+    color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -4370,6 +4370,7 @@ section {
     font-style: italic !important;
     letter-spacing: -0.02em;
     font-size: 0.75em;
+    color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -4453,7 +4454,7 @@ section {
 .hero-area .section-title .hero-quality-work {
     font-family: "Work Sans", sans-serif;
     font-style: italic;
-    color: var(--primary);
+    color: #ffffff;
 }
 
 @media only screen and (max-width: 1919px) {
@@ -4533,7 +4534,7 @@ section {
     font-size: 28px;
     font-weight: 400;
     line-height: 1.4;
-    color: var(--primary);
+    color: #ffffff;
     max-width: 600px;
     margin: 0 auto;
 }
