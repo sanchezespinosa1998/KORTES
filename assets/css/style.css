@@ -4353,7 +4353,6 @@ section {
 .hero-area .section-title .hero-title-line-1 {
     font-family: "Fraunces", serif;
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-area .section-title .hero-title-line-1 strong {
@@ -4371,7 +4370,6 @@ section {
     letter-spacing: -0.02em;
     font-size: 0.75em;
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 @media only screen and (max-width: 1919px) {
