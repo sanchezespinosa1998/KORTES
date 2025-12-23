@@ -22147,6 +22147,11 @@ only screen and (max-width: 1919px) {
     transition: filter 0.3s ease;
 }
 
+.footer-social-icons li:nth-child(3) .social-icon-img {
+    width: 37px;
+    height: 37px;
+}
+
 @media only screen and (max-width: 1399px) {
     .footer-social-icons {
         gap: 35px;
@@ -22155,6 +22160,11 @@ only screen and (max-width: 1919px) {
     .footer-social-icons .social-icon-img {
         width: 36px;
         height: 36px;
+    }
+
+    .footer-social-icons li:nth-child(3) .social-icon-img {
+        width: 33px;
+        height: 33px;
     }
 }
 
@@ -22171,6 +22181,11 @@ only screen and (max-width: 1919px) {
         width: 32px;
         height: 32px;
     }
+
+    .footer-social-icons li:nth-child(3) .social-icon-img {
+        width: 29px;
+        height: 29px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -22185,6 +22200,11 @@ only screen and (max-width: 1919px) {
     .footer-social-icons .social-icon-img {
         width: 28px;
         height: 28px;
+    }
+
+    .footer-social-icons li:nth-child(3) .social-icon-img {
+        width: 25px;
+        height: 25px;
     }
 }
 
