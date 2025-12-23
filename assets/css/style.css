@@ -5663,11 +5663,21 @@ section.pain-points-area {
     max-width: 800px;
     margin: 0 auto;
     opacity: 0.9;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 @media only screen and (max-width: 1199px) {
     .service-section-intro {
         font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .service-section-intro {
+        font-size: 16px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 }
 
@@ -5710,6 +5720,9 @@ section.pain-points-area {
     .services-pricing-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
     }
 }
 
@@ -5734,6 +5747,8 @@ section.pain-points-area {
 @media only screen and (max-width: 767px) {
     .service-pricing-card {
         padding: 30px 20px;
+        overflow: hidden;
+        word-wrap: break-word;
     }
 }
 
@@ -5806,6 +5821,16 @@ section.pain-points-area {
     opacity: 0.7;
     margin-top: 8px;
     font-weight: 400;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media only screen and (max-width: 767px) {
+    .service-card-subtitle {
+        font-size: 14px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
 }
 
 .service-card-pro .service-card-subtitle {
@@ -5820,11 +5845,21 @@ section.pain-points-area {
     color: var(--primary);
     margin-bottom: 15px;
     font-family: var(--font_instrumentsans);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 @media only screen and (max-width: 1399px) {
     .service-card-title {
         font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .service-card-title {
+        font-size: 22px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 }
 
@@ -5859,6 +5894,22 @@ section.pain-points-area {
     font-size: 16px;
     line-height: 1.5;
     color: var(--primary);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media only screen and (max-width: 767px) {
+    .service-feature-item {
+        font-size: 14px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .service-feature-item span:last-child {
+        min-width: 0;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
 }
 
 .service-card-pro .service-feature-item {
@@ -5879,6 +5930,9 @@ section.pain-points-area {
 
 .service-feature-item span:last-child {
     flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .service-card-price {
@@ -6186,12 +6240,23 @@ section.pain-points-area {
     opacity: 0.8;
     margin: 40px 0;
     font-style: italic;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 @media only screen and (max-width: 1199px) {
     .accompaniment-note {
         font-size: 16px;
         margin: 30px 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .accompaniment-note {
+        font-size: 14px;
+        margin: 25px 15px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 }
 
