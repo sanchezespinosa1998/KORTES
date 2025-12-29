@@ -30,6 +30,67 @@
   <!-- Template Main CSS File -->
   <link rel="stylesheet" href="assets/css/style.css?v=1.0">
 
+  <style>
+    /* En móvil, crear separación visual entre párrafos */
+    @media only screen and (max-width: 767px) {
+      .accompaniment-text-mobile .paragraph-break {
+        display: block;
+        height: 1.5em;
+        margin: 0;
+        padding: 0;
+        content: "";
+      }
+    }
+
+    /* Aumentar tamaño del texto de los bullets en las tarjetas de precios */
+    .service-feature-item {
+      font-size: 20px !important;
+    }
+
+    @media only screen and (max-width: 767px) {
+      .service-feature-item {
+        font-size: 18px !important;
+      }
+    }
+  </style>
+
+  <script>
+    // Script para manejar saltos de párrafo en móvil
+    document.addEventListener('DOMContentLoaded', function () {
+      function handleMobileBreaks() {
+        const accompanimentText = document.querySelector('.accompaniment-text-mobile');
+        if (!accompanimentText) return;
+
+        if (window.innerWidth <= 767) {
+          // En móvil, reemplazar br+br con elemento de separación
+          let html = accompanimentText.innerHTML;
+          html = html.replace(/<br\s*\/?>\s*<br\s*\/?>/gi, '<span class="paragraph-break"></span>');
+          accompanimentText.innerHTML = html;
+        }
+      }
+
+      // Ejecutar al cargar
+      handleMobileBreaks();
+
+      // Ejecutar al redimensionar
+      let resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          const accompanimentText = document.querySelector('.accompaniment-text-mobile');
+          if (accompanimentText) {
+            // Restaurar HTML original si es necesario
+            if (window.innerWidth > 767) {
+              accompanimentText.innerHTML = accompanimentText.innerHTML.replace(/<span class="paragraph-break"><\/span>/gi, '<br><br>');
+            } else {
+              handleMobileBreaks();
+            }
+          }
+        }, 250);
+      });
+    });
+  </script>
+
 </head>
 
 
@@ -278,7 +339,7 @@
                         </div>
                       </div>
                     </div>
-                    <p class="text" style="opacity:1;margin-top:0;">
+                    <p class="text accompaniment-text-mobile" style="opacity:1;margin-top:0;">
                       Soy <strong>Aldara</strong>, diseñadora gráfica, editorial e ilustradora.<br><br>
                       <strong>Acompaño a marcas que quieren dejar de improvisar su comunicación</strong> y tomar
                       decisiones con sentido.
@@ -827,7 +888,8 @@
         <div class="copyright-area">
           <div class="copyright-area-inner">
             <div class="copyright-text">
-              <p class="text">© 2025 KORTÉS. Todos los derechos reservados.</p>
+              <p class="text">© 2025 KORTÉS. Todos los derechos reservados. | <a href="privacidad.html"
+                  style="color: inherit; text-decoration: underline;">Política de Privacidad</a></p>
             </div>
           </div>
         </div>
@@ -853,6 +915,202 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js?v=1.0" defer></script>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p>Utilizamos cookies para mejorar su experiencia en nuestro sitio web. Al continuar navegando, acepta nuestro
+          uso de cookies.
+          <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Más información</a>
+        </p>
+      </div>
+      <div class="cookie-banner-buttons">
+        <button id="accept-cookies" class="cookie-btn cookie-btn-accept">Aceptar</button>
+        <button id="reject-cookies" class="cookie-btn cookie-btn-reject">Rechazar</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(74, 30, 32, 0.95);
+      color: #FDDB9A;
+      padding: 20px;
+      z-index: 10000;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .cookie-banner-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-banner-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .cookie-banner-text p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #FDDB9A;
+    }
+
+    .cookie-banner-text a {
+      color: #EE9AAE;
+      text-decoration: underline;
+    }
+
+    .cookie-banner-buttons {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cookie-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .cookie-btn-accept {
+      background-color: #CB404D;
+      color: #FDDB9A;
+    }
+
+    .cookie-btn-accept:hover {
+      background-color: #a8323e;
+      transform: translateY(-2px);
+    }
+
+    .cookie-btn-reject {
+      background-color: transparent;
+      color: #FDDB9A;
+      border: 1px solid #FDDB9A;
+    }
+
+    .cookie-btn-reject:hover {
+      background-color: rgba(253, 219, 154, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .cookie-banner-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cookie-banner-buttons {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .cookie-btn {
+        width: 100%;
+      }
+
+      .cookie-banner-text p {
+        font-size: 13px;
+      }
+    }
+  </style>
+
+  <script>
+    // Cookie Banner Management
+    (function () {
+      const COOKIE_NAME = 'cookie_consent';
+      const COOKIE_EXPIRY_DAYS = 365;
+
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+
+      function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+      function showCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+          banner.style.display = 'block';
+        }
+      }
+
+      function hideCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+          banner.style.display = 'none';
+        }
+      }
+
+      function acceptCookies() {
+        setCookie(COOKIE_NAME, 'accepted', COOKIE_EXPIRY_DAYS);
+        hideCookieBanner();
+      }
+
+      function rejectCookies() {
+        setCookie(COOKIE_NAME, 'rejected', COOKIE_EXPIRY_DAYS);
+        hideCookieBanner();
+      }
+
+      // Check if user has already made a choice
+      document.addEventListener('DOMContentLoaded', function () {
+        const consent = getCookie(COOKIE_NAME);
+        if (!consent) {
+          // Show banner after a short delay for better UX
+          setTimeout(showCookieBanner, 1000);
+        }
+
+        // Add event listeners
+        const acceptBtn = document.getElementById('accept-cookies');
+        const rejectBtn = document.getElementById('reject-cookies');
+
+        if (acceptBtn) {
+          acceptBtn.addEventListener('click', acceptCookies);
+        }
+
+        if (rejectBtn) {
+          rejectBtn.addEventListener('click', rejectCookies);
+        }
+      });
+    })();
+  </script>
 
 </body>
 
