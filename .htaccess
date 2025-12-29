@@ -1,0 +1,59 @@
+# Redirecciones de páginas antiguas de WordPress a la homepage
+# Redirección 301 (permanente) para SEO
+
+# Habilitar el motor de reescritura
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# Redirigir rutas específicas de WordPress a la homepage
+RewriteRule ^page/?$ /index.html [R=301,L]
+RewriteRule ^categories/.*$ /index.html [R=301,L]
+RewriteRule ^type/.*$ /index.html [R=301,L]
+RewriteRule ^showcase-carousel/?$ /index.html [R=301,L]
+RewriteRule ^portfolios/.*$ /index.html [R=301,L]
+RewriteRule ^blog-without-sidebar/?$ /index.html [R=301,L]
+RewriteRule ^a.*$ /index.html [R=301,L]
+RewriteRule ^b.*$ /index.html [R=301,L]
+
+# Redirigir cualquier otra ruta que no sea un archivo o directorio existente
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/index\.html$
+RewriteCond %{REQUEST_URI} !^/privacidad\.html$
+RewriteCond %{REQUEST_URI} !^/assets/
+RewriteCond %{REQUEST_URI} !^/recursos/
+RewriteCond %{REQUEST_URI} !^/portaoflio/
+RewriteCond %{REQUEST_URI} !^/iconos/
+RewriteRule ^.*$ /index.html [R=301,L]
+</IfModule>
+
+# Configuración adicional para seguridad y rendimiento
+<IfModule mod_headers.c>
+    # Prevenir clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevenir MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Habilitar protección XSS
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Compresión GZIP para mejorar el rendimiento
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cacheo de archivos estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
