@@ -4205,7 +4205,7 @@ section {
 }
 
 .body-digital-agency .section-header {
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .body-digital-agency .section-subtitle {
@@ -5135,7 +5135,7 @@ section.pain-points-area {
 
 @media only screen and (max-width: 1199px) {
     .about-area .section-content .btn-wrapper {
-        margin-top: 50px;
+        margin-top: 0px;
     }
 }
 
@@ -6460,7 +6460,7 @@ section.pain-points-area {
 }
 
 .funfact-area .section-title-wrapper {
-    margin-top: 41px;
+    margin-top: 1px;
 }
 
 .funfact-area .funfact-area-inner {
@@ -6718,7 +6718,7 @@ section.pain-points-area {
 
 @media only screen and (max-width: 1199px) {
     .accompaniment-layout {
-        gap: 40px;
+        gap: 0px;
     }
 }
 
@@ -6732,6 +6732,8 @@ section.pain-points-area {
         order: -1;
     }
 }
+
+
 
 .accompaniment-text {
     display: flex;
@@ -6820,6 +6822,12 @@ section.pain-points-area {
     .accompaniment-image {
         grid-column: 1;
         order: -1;
+        margin-bottom: 0px;
+    }
+
+    .accompaniment-text {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 
     .accompaniment-image .thumb {
@@ -20533,7 +20541,7 @@ only screen and (max-width: 1919px) {
 
 @media only screen and (max-width: 1399px) {
     .work-details-area .section-title-wrapper .title-thumb {
-        margin-top: 5px;
+        margin-top: 0px;
     }
 }
 
