@@ -5148,7 +5148,7 @@ section.pain-points-area {
         display: block;
         margin-bottom: 10px;
         margin-top: -5px;
-}
+    }
 }
 
 
@@ -5904,7 +5904,7 @@ section.pain-points-area {
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
-    
+
     .service-feature-item span:last-child {
         min-width: 0;
         word-wrap: break-word;
@@ -6725,7 +6725,7 @@ section.pain-points-area {
 @media only screen and (max-width: 991px) {
     .accompaniment-layout {
         grid-template-columns: 1fr !important;
-        gap: 40px;
+        gap: 0px;
     }
 
     .accompaniment-image {
@@ -6848,7 +6848,7 @@ section.pain-points-area {
 @media only screen and (max-width: 991px) {
     .accompaniment-text .text {
         font-size: 16px;
-        padding-top: 30px;
+        padding-top: 0px;
         padding-bottom: 30px;
     }
 }

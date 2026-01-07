@@ -427,7 +427,7 @@
 
       if (targetElement) {
         window.scrollTo({
-          top: targetElement.offsetTop,
+          top: targetElement.offsetTop - (targetId === 'footer' ? 50 : 0), // Ajuste para el footer
           behavior: 'smooth',
         });
       }
